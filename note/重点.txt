@@ -1,0 +1,502 @@
+krastal 克里斯托 Crastal 结晶
+ 
+select event_bid.lender_id,event_bid.dt,loan.manual_bid_time from event_bid,loan where event_bid.loan_id = loan.id and event_bid.dt >'2017-01-01 00:00:00' and event_bid.type = 'loan' and event_bid.dt = loan.manual_bid_time;
+
+
+select id from shop_user_score_logs_12 where  lender_id = 1452 and oprate_type = 17
+
+$loan_lender_list=$eventbid_obj->where(array('loan_id'=>$loan_id,'type'=>'loan','state_mark'=>array('in',array("deal","loans"))))->order('id desc')->select();
+
+
+//  分割查询出的二维数组
+$loan_7_ids = implode(",",array_column($loan_7_ids,'id'));
+
+UPDATE fadada_rights SET sign_state_role = 'init',pdf_state = 'upload_done' WHERE loan_basic_id in(2374,2567,2400,2255,2250,2163,1759,1687,1688,1689,1690,1691,2079) and sign_state_role='error' and pdf_state='done' limit 839;
+UPDATE fadada_rights SET sign_state_role = 'done' WHERE sign_state_role in('init','error') and loan_basic_id in(1196,1910,2029,2824) limit 154;
+
+UPDATE fadada_rights SET pdf_state = 'upload_done' WHERE pdf_state = 'done' and (sign_state_cy = 'error' or sign_state_role = 'error' or sign_state_lender = 'error' or sign_state_guarantee = 'error');
+UPDATE fadada_rights SET sign_state_cy = 'init' WHERE sign_state_cy = 'error';
+UPDATE fadada_rights SET sign_state_role = 'init' WHERE sign_state_role = 'error';
+UPDATE fadada_rights SET sign_state_lender = 'init' WHERE sign_state_lender = 'error';
+UPDATE fadada_rights SET sign_state_guarantee = 'init' WHERE sign_state_guarantee = 'error';
+
+
+1196,1910,2029,2824
+ 
+DELETE FROM fadada_rights WHERE loan_basic_id in(6109) limit 4;
+
+银行存管sql
+select id,usr_cust_id,open_acct_id,lender_id,resp_code,resp_desc from lender_bind where deposit_way=2 and is_del=0 group by lender_id having count(id)>=2 order by lender_id;
+select id,valdate,amount/100,desline,transtype from bankofnc_batch_aleve where cardnbr='6212461100002702293' and amount/100=200;
+
+delete from white_lender_list where lender_id in (select lender_id from white_lender_list group by lender_id having count(lender_id) > 1) and id not in(select min(id) from white_lender_list group by lender_id having count(lender_id)>1);
+
+select sum(money) as sum_money,lender_id from rights where from_rights_id = 0 and dt>='2017-01-01 00:00:00' and dt<='2017-07-01 00:00:00' group by lender_id order by sum_money desc limit 1
+
+
+6214 8301 0317 7605
+
+select *,count(*) as count from shop_user_score_logs_1 where oprate_type = 17  group by relation_id  having count>1 order by create_time asc;
+
+
+select id,relation_id,score,sum(score),count(id) as count from shop_user_score_logs_1 where oprate_type = 17 group by relation_id having count>1;
+
+select * from shop_user_score_logs_1 where n_id in (select id from shop_user_score_logs_1 where oprate_type = 17 group by relation_id having count(relation_id)>1);
+
+
+
+select sum(rights.money) from rights left join trade_log on rights.event_id = trade_log.ord_id where rights.from_rights_id = 0 and rights.dt >= '2016-08-30 00:00:00' and rights.dt <= '2016-08-31 00:00:00' and trade_log.type = 'pc';
+
+
+select sum(rights.money)  from rights left join (select max(ord_id) as ord_id from trade_log group by ord_id) on rights.event_id = trade_log.ord_id where rights.from_rights_id = 0 and rights.dt >= '2016-08-30 00:00:00' and rights.dt <= '2016-08-31 00:00:00' and trade_log.type = 'pc';
+
+
+select count(a.event_id) as count,sum(a.money) from rights as a left join (select type,ord_id, max(id) as id from trade_log group by ord_id) as b on a.event_id = b.ord_id where a.from_rights_id = 0 and a.dt >= '2016-08-30 00:00:00' and a.dt <= '2016-08-31 00:00:00' and b.type in('app','app2.0');
+
+DELETE FROM lender WHERE id = 398307 limit 1;
+DELETE FROM lender_sms_config WHERE lender_id = 398307 limit 1;
+DELETE FROM rel_channel_lender WHERE lender_id = 398307 limit 1;
+
+DELETE FROM mobile_code WHERE lender_id = 396152 and type = 6 limit 5;
+DELETE FROM sms WHERE lender_id = 396152 and send_type = 6 limit 5;
+
+UPDATE fadada_batch SET loan_id = 4985,loan_basic_id=4422 WHERE id =3994 limit 1;
+
+UPDATE loan_basic SET sn = 'FHQ20170526HY08JL' WHERE id =4094 limit 1;
+UPDATE loan SET sn = 'FHQ20170526HY08JL' WHERE id =4645 limit 1;
+
+insert into lender_sms_config set send_mobile = '13849666005',lender_id = 77255;
+UPDATE lender SET mobile = '13849666005' WHERE id = 77255 limit 1;
+
+
+UPDATE lender_bonus SET status = 'overdue' WHERE id =3219423 limit 1;
+
+ALTER TABLE `fadada_rights` Add column `is_filing` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否提交归档 1：归档 0：未归档 2：失败';
+UPDATE fadada_rights SET retry_num = 3 WHERE id = 719573;
+
+UPDATE fadada_rights SET retry_num = 3 WHERE id in(686690,686691,686695,686697);
+
+UPDATE fadada_batch SET type = 'corporation' WHERE id in(391,395,396,397,398,399,400,401);
+
+update lender_bonus set end_dt = '2017-04-07 23:59:59' where bonus_id = 174 and id >=2793400 and id <= 2793893 limit 44;
+
+
+//修改红包状态为天数
+UPDATE bonus_rule SET end_days = 7,end_date_type='days',end_date='' WHERE id in (152,153);
+
+//重置错误次数  fadada_rights
+
+UPDATE hetong_borrower_info SET basic_id = 1182 WHERE id = 79 limit 1;
+
+UPDATE fadada_rights SET sign_state_role = 'init',pdf_state = 'upload_done' WHERE loan_basic_id in(1447,1448) and id not in(590051,590052,591563) limit 202;
+
+
+select * from rights as r left join channel_lender_bind as b on b.lender_id = r.lender_id where r.from_rights_id = 0 and r.state !=6 and b.channel_id = 3;
+
+insert into channel_lender_bind set lender_id = 378112, channel_id = 3, type = "new", c_uname = "18953869558", c_mobile = "18953869558", userkey = "fc95310781b18f860513a90ddd4740e5", dt = "2017-01-23 13:14:14"
+
+
+DELETE FROM hetong_borrower_info WHERE id = 395 limit 1;
+
+
+DELETE FROM fadada_rights WHERE id = 626376 limit 1;
+
+//三元表达式（第四种答案）
+$lender['mobile'] ? $lender['mobile'] : ($lender['usr_mp'] ? $lender['usr_mp'] : '');
+
+
+INSERT INTO rel_channel_lender (lender_id, channel_id,get_str,dt) VALUES (359844,165,'{"ydcod":"lanzhong"}','2016-08-16 11:04:27');
+INSERT INTO rel_channel_lender (lender_id, channel_id,get_str,dt) VALUES (363086,272,'{"ydcod":"kumichuanmei"}','2016-09-21 10:04:53');  
+update rel_channel_lender SET channel_id = 155,get_str='{"ydcod":"renrenlee"}' WHERE id = 282163;
+
+// 加密
+$send=urlencode(base64_encode(serialize($send))); 加密
+// 解密
+$receive = unserialize(base64_decode(urldecode($_GET['r'])));
+
+
+php class_exists($class_name);  判断类是否存在
+
+
+//发放体验金、自动购买项目
+$data_experience = new data_experience();
+$data_experience->give_experience_money_by_custom($lender_id, 1000000, $channel_name."发放体验金");
+//直接购买了吧，时间来不及
+$data_experience->add_rights($lender_id,16, 1000000);
+
+
+update borrower SET `cfca_password` = '6e57f4b8a5fc48188bcd1dbc7f949a68' where id = 226 limit 1;
+
+select * from experience_loan
+
+增加积分
+comm::write_credit_log($lender_id,'future_rights',$rights_id,50);//
+
+
+select * from shop_user_score INTO OUTFILE '/tmp/you_1';
+
+
+select customer_id from  borrower where customer_id !='' union select customer_id from  creditor where customer_id !='' union select customer_id from  corporation where customer_id !='' INTO OUTFILE '/tmp/hai_18';
+ 
+//导出邀请活动的数据
+select b.bonus_money,b.lender_id,l.username,l.mobile,b.dt from bonus_huodong as b left join lender as l on b.lender_id = l.id where b.huodong_flag = 'new_invite_bonus_2016' INTO OUTFILE '/tmp/hai_21';
+
+//绑定江西银行卡的用户导出
+select lender_bind.lender_id,lender.username,lender.mobile,lender.dt,lender_account.due_principle,lender_account.actual_interest,lender_account.due_interest from lender_bind left join lender on lender_bind.lender_id = lender.id  left join lender_account on lender.id = lender_account.id where lender_bind.is_del = 0 and lender_bind.deposit_way = 2 order by lender_account.due_principle desc INTO OUTFILE '/tmp/hai_17';
+
+
+
+//修改债权人cfca手机号和密码
+update creditor SET cfca_mobile = '18710284485',cfca_password='6e57f4b8a5fc48188bcd1dbc7f949a68';
+update borrower SET cfca_mobile = '18710284485',cfca_password='6e57f4b8a5fc48188bcd1dbc7f949a68';
+
+update borrower SET is_ca = 0,customer_id='',ca_dt='',email='605872528@qq.com' where id = 143;  
+DELETE FROM fadada_rights WHERE loan_id = 1215;
+DELETE FROM guarantee WHERE id in(42,43,44,45);
+
+update corporation SET cfca_password='6e57f4b8a5fc48188bcd1dbc7f949a68';
+update guarantee SET cfca_password='6e57f4b8a5fc48188bcd1dbc7f949a68';
+
+//导出粽子活动的数据
+select activity_score_detail.lender_id,activity_score_detail.goods_name,activity_score_detail.link_man,activity_score_detail.link_tel,activity_score_detail.address,lender.username,lender.mobile,lender.usr_name,lender.id_no from activity_score_detail,lender where activity_score_detail.lender_id = lender.id and activity_score_detail.activity_id = 36 and activity_score_detail.type in (5,6,8,9,11) INTO OUTFILE '/tmp/hai.txt';
+
+
+
+//导出数据（抽奖获得雨伞的用户）
+select activity_to_lender.lender_id,lender_ext.address,lender_ext.recipient_tel,lender_ext.recipient_name,lender.username,lender.mobile from activity_to_lender left join lender_ext on activity_to_lender.lender_id = lender_ext.lender_id left join lender on activity_to_lender.lender_id = lender.id where activity_to_lender.activity_id = 21 and activity_to_lender.milestone_id = 1 INTO OUTFILE '/tmp/hai.txt';
+
+//导出数据（排名活动）
+select activity_statistics.lender_id,activity_statistics.money,lender.mobile,lender.username,lender.usr_name from activity_statistics left join lender on activity_statistics.lender_id = lender.id where activity_id = 48 and  activity_statistics.money >=50000000 order by activity_statistics.money desc INTO OUTFILE '/tmp/hai_24.txt';
+
+
+//导出数据（有汇付余额）
+select lender_account.money,lender.mobile,lender.username,lender.usr_name from lender_account left join lender on lender_account.id=lender.id where lender_account.money > 0 order by lender_account.money desc INTO OUTFILE '/tmp/hai';
+
+
+
+//修改加息券过期时间
+update jiaxiquan SET `receive_end_time` = '2016-05-31 23:59:59',`end_date`='2016-05-31' WHERE id  in (430,431);
+
+//修改加入的队伍
+update activity_statistics SET team_flag = '20160513_2' WHERE id = 12437;
+
+//清空数据库Id归零
+truncate table ****;
+
+
+//单选按钮控制某元素隐藏、输出
+$("input[name='end_date_type']").on("click",function(){
+	if($("input[name='end_date_type']:checked").val() == "date"){
+		$("#type_date").css({"display":"table-row"});
+		$("#type_days").css({"display":"none"});
+	}else{
+		$("#type_date").css({"display":"none"});
+		$("#type_days").css({"display":"table-row"});
+	}
+});
+
+
+//获得加息券的过期时间
+$data_jiaxiquan = new data_jiaxiquan();
+$jiaxiquan = $data_jiaxiquan->get_by_id($jiaxiquan_id);
+if($jiaxiquan['end_date_type'] == 'days'){
+	$end_dt = date("Y-m-d H:i:s",time() + $jiaxiquan['end_days'] * 24*3600);
+}else{
+	$end_dt = $jiaxiquan['end_date'];
+}
+
+//充值加息券lender表的过期时间
+update jiaxiquan_lender SET end_dt = '2014-12-12 23:59:59' WHERE jiaxiquan_id in(4,5);
+update jiaxiquan_lender SET end_dt = '2014-12-25 23:59:59' WHERE jiaxiquan_id in(6,7);
+update jiaxiquan_lender SET end_dt = '2015-02-04 23:59:59' WHERE jiaxiquan_id in(8,11,10);
+update jiaxiquan_lender SET end_dt = '2015-05-08 23:59:59' WHERE jiaxiquan_id in(12,13,14);
+update jiaxiquan_lender SET end_dt = '2015-03-31 23:59:59' WHERE jiaxiquan_id in(18,19);
+update jiaxiquan_lender SET end_dt = '2015-05-13 23:59:59' WHERE jiaxiquan_id in(20,21);
+update jiaxiquan_lender SET end_dt = '2015-05-21 23:59:59' WHERE jiaxiquan_id =22;
+update jiaxiquan_lender SET end_dt = '2015-08-31 23:59:59' WHERE jiaxiquan_id in(24,25,26,27,28);
+update jiaxiquan_lender SET end_dt = '2015-06-17 23:59:59' WHERE jiaxiquan_id =29;
+update jiaxiquan_lender SET end_dt = '2015-06-24 23:59:59' WHERE jiaxiquan_id =30;
+update jiaxiquan_lender SET end_dt = '2015-07-15 23:59:59' WHERE jiaxiquan_id =31;
+update jiaxiquan_lender SET end_dt = '2015-07-30 23:59:59' WHERE jiaxiquan_id in(32,33,34);
+update jiaxiquan_lender SET end_dt = '2015-08-18 23:59:59' WHERE jiaxiquan_id in(35,36);
+update jiaxiquan_lender SET end_dt = '2015-08-07 23:59:59' WHERE jiaxiquan_id =37;
+update jiaxiquan_lender SET end_dt = '2015-08-17 23:59:59' WHERE jiaxiquan_id =38;
+update jiaxiquan_lender SET end_dt = '2015-08-21 23:59:59' WHERE jiaxiquan_id =39;
+update jiaxiquan_lender SET end_dt = '2015-08-31 23:59:59' WHERE jiaxiquan_id in(40,41,42,43,44);
+update jiaxiquan_lender SET end_dt = '2015-09-17 23:59:59' WHERE jiaxiquan_id in(45,46,47);
+update jiaxiquan_lender SET end_dt = '2015-10-15 23:59:59' WHERE jiaxiquan_id =48;
+update jiaxiquan_lender SET end_dt = '2015-10-30 23:59:59' WHERE jiaxiquan_id =49;
+update jiaxiquan_lender SET end_dt = '2015-11-11 23:59:59' WHERE jiaxiquan_id =50;
+update jiaxiquan_lender SET end_dt = '2015-11-30 23:59:59' WHERE jiaxiquan_id in(51,52);
+update jiaxiquan_lender SET end_dt = '2015-12-10 23:59:59' WHERE jiaxiquan_id >= 101 and jiaxiquan_id <= 401;
+update jiaxiquan_lender SET end_dt = '2015-12-30 23:59:59' WHERE jiaxiquan_id in(402,403);
+update jiaxiquan_lender SET end_dt = '2017-12-15 23:59:59' WHERE jiaxiquan_id =404;
+update jiaxiquan_lender SET end_dt = '2015-12-24 23:59:59' WHERE jiaxiquan_id =405;
+update jiaxiquan_lender SET end_dt = '2015-12-23 23:59:59' WHERE jiaxiquan_id =406;
+update jiaxiquan_lender SET end_dt = '2017-01-10 23:59:59' WHERE jiaxiquan_id =408;
+update jiaxiquan_lender SET end_dt = '2016-01-15 23:59:59' WHERE jiaxiquan_id =409;
+update jiaxiquan_lender SET end_dt = '2016-03-04 23:59:59' WHERE jiaxiquan_id =413;
+update jiaxiquan_lender SET end_dt = '2016-03-17 23:59:59' WHERE jiaxiquan_id =414;
+update jiaxiquan_lender SET end_dt = '2016-04-01 23:59:59' WHERE jiaxiquan_id =415;
+update jiaxiquan_lender SET end_dt = '2016-04-10 23:59:59' WHERE jiaxiquan_id =416;
+update jiaxiquan_lender SET end_dt = '2016-04-18 23:59:59' WHERE jiaxiquan_id =417;
+update jiaxiquan_lender SET end_dt = '2016-04-26 23:59:59' WHERE jiaxiquan_id =418;
+update jiaxiquan_lender SET end_dt = '2016-05-03 23:59:59' WHERE jiaxiquan_id in(421,422);
+update jiaxiquan_lender SET end_dt = '2016-05-13 23:59:59' WHERE jiaxiquan_id = 426;
+
+
+update fadada_rights SET sign_state_guarantee = 'not_need_sign' where type = 'lender' and guarantee_id = 41 and sign_state_guarantee in('error','doing') limit 64;
+
+
+
+//修改加息券的结束时间的类型
+update jiaxiquan SET end_date_type = 'days',end_days = 7 WHERE id  in(423,424,425);
+update jiaxiquan SET end_date_type = 'days',end_days = 15 WHERE id  in(419,420);
+
+//投资红包分享地址
+https://www.yindou.com/a/loan_red_pack.php?share_id=1&act=get_bonus&step=2
+
+//计算某个红包使用的金额
+SELECT sum(event_bid.money) from event_bid LEFT JOIN lender_bonus ON lender_bonus.event_bid_id=event_bid.id where lender_bonus.flag = 'goodluck_20' and lender_bonus.status = 'used';
+
+//计算项目天数
+$loan_info = $data_loan->get_loan_by_id($record['loan_id']);
+$loan_days = schedule::dt_duration($loan['start_date'],$loan['payback_date']);
+
+//HAVING  sql  用法
+SELECT dept,COUNT(user_name) count_tmp FROM ec_uses GROUP BY dept HAVING count_tmp>1;
+
+//查询拥有快过期加息券的用户
+select count(jiaxiquan_lender.lender_id) as count,jiaxiquan_lender.lender_id,jiaxiquan.id from jiaxiquan_lender left join jiaxiquan on jiaxiquan_lender.jiaxiquan_id = jiaxiquan.id where jiaxiquan_lender.state = 'init' and jiaxiquan.end_date = '2016-12-01' group by jiaxiquan_lender.lender_id;
+
+//某天持有过期加息券的人
+select jiaxiquan_lender.lender_id from jiaxiquan_lender left join jiaxiquan on jiaxiquan_lender.jiaxiquan_id = jiaxiquan.id and jiaxiquan_lender.state = init and jiaxiquan.end_date = '2016-02-16';
+
+//查询每月发放的邀请奖励记录
+select lender_id,bonus_money from bonus_huodong where huodong_flag='new_invite_bonus' and state = 'done'  and dt > '2016-02-01 00:00:00' and dt < '2016-02-29 23:59:59' order by bonus_money desc;
+
+//绑定渠道
+INSERT INTO rel_channel_lender (lender_id, channel_id,get_str,dt) VALUES (357675,155,'{"ydcod":"renrenlee"}','2016-08-02 12:48:36');
+INSERT INTO rel_channel_lender (lender_id, channel_id,get_str,dt) VALUES (357667,155,'{"ydcod":"renrenlee"}','2016-08-02 10:44:35');
+
+
+UPDATE channel SET flag = 'wangcaicat' WHERE id = 215 limit 1;
+
+//更换p2peye 绑定码
+UPDATE channel_lender_bind SET lender_id = 56399,type = 'old',c_uname = 'xxm682482' WHERE id = 50 limit 1;
+
+
+
+UPDATE channel_lender_bind SET userkey = 'cc76d60c5dbea2e7f820d173d6c592fa' WHERE id = 566 limit 1;
+DELETE FROM channel_lender_bind WHERE id =1182;
+DELETE FROM channel_lender_bind WHERE id =753;
+
+//邀请码装换
+$data_agent = new data_agent();
+echo $data_agent::sixtyfour_to_ten('zey');
+
+
+//解除/绑定 上家关系
+DELETE FROM agent_customer WHERE lender_id =293039;
+UPDATE lender SET r_code = '1WtE' WHERE id = 366060;
+INSERT INTO agent_customer (agent_id,lender_id,dt_regist,dt_end,level_id,level_rate,level_duration)VALUES(287868,390400,'2017-05-13','2017-08-13',1,10,90);
+
+
+
+//修改福利券过期时间
+UPDATE fuliquan_lender SET end_time = '2015-11-28 23:59:59' WHERE type IN('llb_yidong','llb_liantong','llb_dianxin');
+
+//去掉字符串最后一个字符
+$ids = '17450,17449,17448,17447,17446,17445,17444,';
+echo $ids =  substr($ids,0,strlen($ids)-1);
+$ids= '17450,17449,17448,17447,17446,17445,17444';
+
+//sql语法
+DELETE FROM Person WHERE LastName = 'Wilson' 
+UPDATE jiaxiquan SET end_date = '2015-11-30' WHERE id IN (51,52); 
+insert into activity_lender_chance (activity_id,lender_id,flag,left_num) select 2,id,20150824,1 from lender;
+
+insert into fadada_basic (basic_id,is_new,dt) select id,0,'getdate()' from loan_basic;
+
+
+//这里发放加息券给被邀请的用户 新注册活动，由原来的首笔投资以后移动到这里  2015-05-27 zsh
+$loan_biz_huodong = new loan_biz_huodong();
+$add_id = $loan_biz_huodong->give_jiaxiquan_to_new_lender($insert_id);
+if(!$add_id){
+@new data_log('error', '被邀请新手加息券发放失败', array ('lender_id'=>$insert_id ), __CLASS__, __FUNCTION__, __LINE__, __DIR__);
+}
+
+//日期计算公式
+echo "现在时间：<b>".date("Y-m-d H:i:s")."</b><br/>";
+echo "<br/>方法一：<br/>";
+echo "1年后的时间：".date('Y-m-d H:i:s',strtotime('+1 year'))."<br/>";
+echo "1个月后的时间：".date('Y-m-d H:i:s',strtotime('+1 month'))."<br/>";
+echo "1天后的时间：".date('Y-m-d H:i:s',strtotime('+1 day'))."<br/>";
+echo "1星期后的时间：".date('Y-m-d H:i:s',strtotime('+1 week'))."<br/>";
+echo "1小时后的时间：".date('Y-m-d H:i:s',strtotime('+1 hour'))."<br/>";
+echo "1分钟后的时间：".date('Y-m-d H:i:s',strtotime('+1 minute'))."<br/>";
+echo "1秒后的时间：".date('Y-m-d H:i:s',strtotime('+1 second'))."<br/>";
+echo "<br/>方法二：<br/>";
+echo "1个月后的时间：".date('Y-m-d H:i:s',mktime(date("H"),date("i"),date("s"),date("m")+1,date("d"),date("Y")))."<br/>";
+echo "1年零1个月后的时间：".date('Y-m-d H:i:s',mktime(date("H"),date("i"),date("s"),date("m")+1,date("d"),date("Y")+1))."<br/>";
+
+
+//新添加枚举类型的sql
+ALTER TABLE table_name ADD col_name ENUM("0","1","2","3") NOT NULL DEFAULT "0";
+
+
+
+//switch用法例子
+switch($rate){
+	case 1 :
+		$where .= ' and loan.rate	< 1200 ';
+		break;
+//				case 2 :
+//					$where .= ' and rights_on_sell.rate	>= 1000 and rights_on_sell.rate	< 1200';
+//					break;
+	case 3 :
+		$where .= ' and loan.rate	>= 1200 and loan.rate	< 1500';
+		break;
+	case 4 :
+		$where .= ' and loan.rate	>= 1500 ';
+		break;
+	default;
+
+//三维运算符  直观用法
+$page = ($page>1) ? intval($page) : 1;
+
+//计算已知时间和当前时间差几个月
+$arr = explode('-', '2014-5-1');
+$y = $arr[0] - date('Y', time());
+$month =  $y * 12 - date('m', time()) + $arr[1];
+
+
+//当前时间上加
+public function ls_my_interest_by_month($uid,$month = ""){
+		$uid = intval($uid);
+		if($month == ""){
+			$start_date = date("Y-m-d",strtotime("first day of this month"));
+			$end_date = date("Y-m-d",strtotime("last day of this month"));
+		}else{
+			$start_date = date("Y-m-d",strtotime("first day of ".$month." month"));
+			$end_date = date("Y-m-d",strtotime("last day of ".$month." month"));
+		}
+		
+		echo "state:".$start_date;
+		echo "end:".$end_date;
+}
+
+
+crontab -l 查看
+crontab -e 编辑
+crontab -help
+
+lender.usr_cust_id	IS NOT NULL  sql中不为空  IS NOT NULL
+
+IGNORE 在mysql中用来屏蔽错误！
+
+一个字段在多个字符中查找！IN
+SELECT * FROM employee_tbl WHERE daily_typing_pages IN ( 250, 220, 170 );
+
+手机号码中间4位换*号
+$phone_new = substr($configs['send_mobile'],0,3)."****".substr($configs['send_mobile'],7,4);
+
+设置memcache为服务：1，找到exe文件  memcache.exe -d install
+   
+复制已有一条数据 INSERT  INTO  tb2  ( id, name, age  )   SELECT  id, name, age   FROM  tb1  WHERE  id = 1;
+
+除重求和：select lender_id,sum(hold_money) as countmoney from rights where loan_id IN (45,46,50,52) group by lender_id order by countmoney desc
+
+UPDATE fuliquan_lender SET title = '【酒仙网】20元直减券' WHERE type = 'jiu_xian_wang'
+
+UPDATE  experience_loan set rate=800 where id = 26 limit 1;
+
+字符串校验：$a = addslashes(trim($a));
+数字初始化；$a = intval($a);
+时间格式初始化；date("Y-m-d H:i:s",strtotime($value));
+
+对比比现有时间以后的90天
+dt < DATE_ADD(dt,INTERVAL 90 DAY)
+
+修改数据库提交文件   update/index.php
+
+sql 格式化输出 \G
+
+sql  小于等于 <=  大于等于 >=
+
+cmd执行语句
+F:\php\php.exe G:\Code\src\cron\export_data_task.php
+
+$_REQUEST   获得当前页面接收的所有参数
+global      包含
+
+<?php
+$a = 1;
+$b = 2;
+
+function Sum()
+{
+    global $a, $b;
+
+    $b = $a + $b;
+}
+
+Sum();
+echo $b;  3
+?>
+
+
+
+送别(电影《厨子戏子痞子》片尾曲) - 朴树
+长亭外 古道边芳草碧连天
+晚风拂柳笛声残夕阳山外山
+天之涯 地之角 知交半零落
+一壶浊酒尽余欢今宵别梦寒
+今千里 酒一杯 声声喋喋催
+问君此去几时还
+来时莫徘徊
+天之涯 地之角 知交半零落
+一壶浊洒尽余欢 今宵别梦寒
+天之涯 地之角 知交半零落
+问君此去几时还
+来时莫徘徊
+问君此去几时还
+来时莫徘徊
+
+
+年少锦时
+
+又回到春末的五月
+凌晨的集市人不多
+小孩在门前唱着歌
+阳光它照暖了溪河
+柳絮乘着大风吹
+树影下的人想睡
+沉默的人从此刻开始快乐起来
+脱掉寒冬的傀儡
+我忧郁的白衬衫
+青春口袋里面的第一支香烟
+情窦初开的我 从不敢和你说
+仅有辆进城的公车
+还没有咖啡馆和奢侈品商店
+晴朗蓝天下，昂头的笑脸，爱很简单
+
+钟声敲响了日落
+柏油路跃过山坡
+一直通向北方的
+是我们想象 长大后也未曾经过
+爬满青藤的房子
+屋檐下的邻居在黄昏中飞驰
+秋天的时候，柿子树一熟 够我们吃很久
+收音机靠坐在床头
+贪玩的少年抱着漫画书不放手
+陪我入睡的 是月亮的忧愁
+和装满幻梦的枕头，沾满口水的枕头 喔欧~
+我忧郁的白衬衫
+青春口袋里面的第一支香烟
+情窦初开的我~~~
+从不敢和你说
+仅有辆进城的公车
+还没有咖啡馆和奢侈品商店
+晴朗蓝天下，昂头的笑脸，爱很简单
+爱很简单......
