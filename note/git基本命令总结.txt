@@ -28,8 +28,7 @@ git push origin/master(发送到远端)
 
 git mnf origin/master（合并master到此分支：增加一条新日志）
 
-
 vi .git/config（修改git配置文件）
 
-
 ssh-keygen -t rsa -C "jaquery@163.com" -b 4096  （生成git key）
+（添加key时要勾选读写权限，否则push不了代码）
