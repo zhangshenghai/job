@@ -1,0 +1,35 @@
+git co zhangshenghai  (进入分支)
+
+git st （查看变化文件）
+
+git ss （保存未提交文件）
+
+git st（再次查看）
+
+git pull（查看差异代码）
+
+git push origin zhangshenghai(发送到远端)
+
+git fetch --all（查看所有分支差异）
+
+git merge origin/master(合并主干代码)
+
+git co master（进入主干）
+
+git pull origin master（合并远端主干代码）
+
+git vdf origin/master（查看提交变化）
+
+git fetch --all(查看所有分支差异)
+
+git merge origin/zhangshenghai（合并提交的分支）
+
+git push origin/master(发送到远端)
+
+git mnf origin/master（合并master到此分支：增加一条新日志）
+
+
+vi .git/config（修改git配置文件）
+
+
+ssh-keygen -t rsa -C "jaquery@163.com" -b 4096  （生成git key）
